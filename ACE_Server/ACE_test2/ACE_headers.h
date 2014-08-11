@@ -1,0 +1,12 @@
+#pragma once
+#include "StdAfx.h"
+#include "ace/Addr.cpp"  
+#include "ace/Time_Value.cpp"  
+#include "ace/Message_Queue.h"  
+#include "ace/Asynch_IO.h"  
+#include "ace/OS.h"  
+#include "ace/Proactor.h"  
+#include "ace/CDR_Stream.h"
+#include "ace/Asynch_Acceptor.h"
+#include "ace/Asynch_Connector.h"  
+#include "ace/SOCK_SEQPACK_Association.h"
