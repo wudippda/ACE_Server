@@ -2,10 +2,11 @@
 #include "StdAfx.h"
 #include "Reciever.h"
 
-void Reciever::addresses (const ACE_INET_Addr &remote_address, const ACE_INET_Addr &local_address)
+#pragma comment(lib,"ACEd.lib")
+
+Reciever::Reciever()
 {
-	this->client_address = remote_address;
-	this->local_address = local_address;
+	;
 }
 
 void Reciever::open (ACE_HANDLE h, ACE_Message_Block&)  
@@ -15,7 +16,14 @@ void Reciever::open (ACE_HANDLE h, ACE_Message_Block&)
 	//client_address.addr_to_string(peer_name, sizeof(peer_name) / sizeof(ACE_TCHAR));
 	//ACE_DEBUG((LM_DEBUG, "%s", "\nOne User has established a connection.\n"));
 	//ACE_DEBUG((LM_DEBUG,ACE_TEXT("IP Address:%s \n"),peer_name));
-	//ACE_OS::printf("Current time:%s",this->CurTime());
+	ACE_OS::printf("One User has established a connection.\n");
+	ACE_OS::printf("Current time:%s",this->curTime());
+
+	//get remote ip and port
+	/*ACE_INET_Addr addr;
+	ACE_SOCK_SEQPACK_Association ass = ACE_SOCK_SEQPACK_Association(h); 
+	size_t addr_size = 1; 
+	ass.get_local_addrs(&addr,addr_size);*/
 
     this->handle(h);
     if (this->reader_.open(*this) != 0 )  
@@ -51,6 +59,8 @@ void Reciever::handle_read_stream (const ACE_Asynch_Read_Stream::Result &result)
         return;  
     }
 
+	ACE_OS::printf("In read data\n");
+
 	dispatcher = new MessageDispatcher();
 	dispatcher->dispatchMessage(mb);
 	handler = new MessageHandler();
@@ -59,8 +69,10 @@ void Reciever::handle_read_stream (const ACE_Asynch_Read_Stream::Result &result)
 
 	//case CONNECT_SERVER
 	//------------------------------------------------------------------------//
-	if(cmd = COM::CONNECT_SERVER)
+	if(cmd == COM::CONNECT_SERVER)
 	{
+		ACE_OS::printf("In CONNECT_SERVER\n");
+
 		pair<ACE_UINT16,ACE_UINT16> randomPos = handler->handleConnectionSever(dispatcher->getIP(),dispatcher->getPort());
 		if(randomPos.first != 0 && randomPos.second != 0)
 		{
@@ -69,8 +81,12 @@ void Reciever::handle_read_stream (const ACE_Asynch_Read_Stream::Result &result)
 		}
 	}
 
-	//case CONNECT_SERVER
+	//case GET_SCENE_DATA
 	//------------------------------------------------------------------------//
+	else if(cmd == COM::GET_SCENE_DATA)
+	{
+
+	}
 
 	//case CONNECT_FAIL_REPORT
 	//------------------------------------------------------------------------//

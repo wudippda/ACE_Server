@@ -15,16 +15,11 @@ public:
 	Reciever();
 	~Reciever()  
     {  
-		if(handler != NULL)
-			delete handler;
-		if(dispatcher != NULL)
-			delete dispatcher;
-
         if (this->handle () != ACE_INVALID_HANDLE)  
             ACE_OS::closesocket (this->handle ());  
     }
 
-	virtual void addresses (const ACE_INET_Addr &remote_address, const ACE_INET_Addr &local_address);
+	//virtual void addresses (const ACE_INET_Addr &remote_address, const ACE_INET_Addr &local_address);
     virtual void open (ACE_HANDLE h, ACE_Message_Block&);     
     virtual void handle_read_stream(const ACE_Asynch_Read_Stream::Result &result);
     virtual void handle_write_dgram(const ACE_Asynch_Write_Stream::Result &result);  
@@ -37,6 +32,6 @@ private:
 
 	ACE_INET_Addr client_address,local_address;
 	int client_x,client_y;
-	MessageDispatcher *dispatcher;
-	MessageHandler *handler;
+	MessageDispatcher* dispatcher;
+	MessageHandler* handler;
 };  

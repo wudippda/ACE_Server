@@ -20,10 +20,7 @@ public:
 
 	Map(int mapX,int mapY,int block_size);
 	~Map();
-
 	void addBlock(Block b){this->Blocks.push_back(b);}
-
-private:
 
 	std::vector<Block> Blocks;
 	int block_size;

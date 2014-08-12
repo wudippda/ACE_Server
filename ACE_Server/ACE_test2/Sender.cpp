@@ -2,6 +2,19 @@
 #include "StdAfx.h"
 #include "Sender.h"
 
+#pragma comment(lib,"ACEd.lib")
+
+Sender::Sender()
+{
+	;
+}
+
+Sender::~Sender()
+{
+	if(this->handle () != ACE_INVALID_HANDLE)  
+		ACE_OS::closesocket(this->handle ());  
+}
+
 void Sender::addresses(const ACE_INET_Addr &remote_address, const ACE_INET_Addr &local_address)
 {
 	this->client_address = remote_address;

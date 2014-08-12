@@ -1,6 +1,20 @@
 #include "StdAfx.h"
 #include "MessageConstructor.h"
 
+#pragma comment(lib,"ACEd.lib")
+
+MessageConstructor::MessageConstructor()
+{
+	;
+}
+
+MessageConstructor* MessageConstructor::MCsingleton = NULL;
+
+MessageConstructor::~MessageConstructor()
+{
+	;
+}
+
 ACE_Message_Block* MessageConstructor::createConnectionAck(ACE_UINT16 xPos,ACE_UINT16 yPos,ACE_UINT16 radius)
 {
 	cdrOut << ACE_CDR::UShort(COM::CONNECTION_ACK);

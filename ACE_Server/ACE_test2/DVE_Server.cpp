@@ -3,6 +3,13 @@
 #include "DVE_Server.h"
 #include "MapCreator.h"
 
+#pragma comment(lib,"ACEd.lib")
+
+DVE_Server::DVE_Server()
+{
+	;
+}
+
 bool DVE_Server::connectToClient(ACE_INET_Addr addr,ACE_UINT16 cmd)
 {
 	connector.open();

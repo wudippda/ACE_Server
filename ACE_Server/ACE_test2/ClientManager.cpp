@@ -2,6 +2,19 @@
 #include "StdAfx.h"
 #include "ClientManager.h"
 
+ClientManager::ClientManager()
+{
+	CMsingleton = NULL;
+}
+
+ClientManager* ClientManager::CMsingleton = NULL;
+
+ClientManager::~ClientManager()
+{
+	if(CMsingleton != NULL)
+		delete CMsingleton;
+}
+
 /////////----------------Public-----------------//////////////
 bool ClientManager::addClient(ACE_UINT32 id,Client c)
 {

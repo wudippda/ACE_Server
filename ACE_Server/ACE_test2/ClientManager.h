@@ -1,7 +1,7 @@
 #pragma once
 #include "StdAfx.h"
-#include <map>
 #include "Client.h"
+#include <map>
 
 using namespace std;
 
@@ -13,11 +13,7 @@ class ClientManager
 private:
 
 	ClientManager();
-	~ClientManager()
-	{
-		if(CMsingleton != NULL)
-			delete CMsingleton;
-	}
+	~ClientManager();
 
 public:
 

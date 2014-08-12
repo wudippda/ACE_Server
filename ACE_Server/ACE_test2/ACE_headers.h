@@ -1,7 +1,7 @@
 #pragma once
 #include "StdAfx.h"
-#include "ace/Addr.cpp"  
-#include "ace/Time_Value.cpp"  
+#include "ace/Addr.h"  
+#include "ace/Time_Value.h"  
 #include "ace/Message_Queue.h"  
 #include "ace/Asynch_IO.h"  
 #include "ace/OS.h"  

@@ -13,11 +13,7 @@ class Sender : public ACE_Service_Handler
 public:
 	
 	Sender();
-	~Sender()  
-    {  
-        if (this->handle () != ACE_INVALID_HANDLE)  
-            ACE_OS::closesocket (this->handle ());  
-    }
+	~Sender();
 
 	virtual void addresses (const ACE_INET_Addr &remote_address, const ACE_INET_Addr &local_address);
     virtual void open (ACE_HANDLE h, ACE_Message_Block&);     

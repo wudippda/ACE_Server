@@ -60,26 +60,10 @@
 	
 	/*******************************************************************************************************/
 
-static class COM
+class COM
 {
-	COM()
-	{
-		CONNECT_SERVER = 0x01;
-		GET_SCENE_DATA = 0x02;
-		SCENE_IS_HIT_ACK = 0x03;
-		CLIENT_CHAT = 0x04;
-		CONNECT_FAIL_REPORT = 0x05;
-		CLIENT_MOVE = 0x06;
-		CLIENT_QUIT = 0x07;
-
-		//////////Server//////////
-		CONNECTION_ACK = 0x61;
-		CHAT_SUCCESS_ACK = 0x62;
-		MOVE_SUCCESS_ACK = 0x63;
-		UPDATA_NEIGHBOUR = 0x64;
-	}
-
 public:
+
 	//Commands use by Client
 	static ACE_UINT16 CONNECT_SERVER;
 	static ACE_UINT16 GET_SCENE_DATA;

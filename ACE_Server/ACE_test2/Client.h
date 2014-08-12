@@ -23,7 +23,7 @@ class Client
 {
 public:
 
-	Client(ACE_INET_Addr address,int x,int y,int AOI)
+	Client(ACE_INET_Addr address,ACE_UINT16 x,ACE_UINT16 y,ACE_UINT16 AOI)
 	{
 		addr = address;
 		client_x = x;
@@ -32,10 +32,10 @@ public:
 		head.next = NULL;
 	}
 
-	void setClientPos(int x,int y)
+	void setClientPos(ACE_UINT16 x,ACE_UINT16 y)
 	{
-		this->xPos = x;
-		this->yPos = y;
+		this->client_x = x;
+		this->client_y = y;
 	}
 
 	void setNum(int num)
@@ -53,10 +53,10 @@ public:
 
 	ACE_INET_Addr addr;
 
-	int client_x,client_y;
-	int xPos,yPos;
+	ACE_UINT16 client_x,client_y;
+	//int xPos,yPos;
 	int num;
-	int AOI_radius;
+	ACE_UINT16 AOI_radius;
 	Ability ability;
 	SimpleNeighborList head;
 };

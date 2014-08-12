@@ -7,11 +7,7 @@ class MessageDispatcher
 public:
 
 	MessageDispatcher();
-	~MessageDispatcher()
-	{
-		if(this->mb != NULL)
-			delete mb;
-	}
+	~MessageDispatcher();
 
 	ACE_UINT32 getCmd(){return this->cmd;}
 	ACE_UINT32 getIP(){return this->tmpIP;}

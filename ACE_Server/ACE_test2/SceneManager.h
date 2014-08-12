@@ -7,6 +7,9 @@ class SceneManager
 {
 public:
 
+	SceneManager();
+	~SceneManager();
+
 	static SceneManager* getInstance()
 	{
 		if(SMsingleton == NULL)
@@ -17,7 +20,11 @@ public:
 		return SMsingleton;
 	}
 
+	void createDebugMap();
+	void check4Scene(ACE_UINT16 x,ACE_UINT16 y,ACE_UINT16 radius);
+
 private:
 
 	static SceneManager* SMsingleton;
+	Map* map;
 };
